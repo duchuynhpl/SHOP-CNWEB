@@ -1,0 +1,13 @@
+body{
+    font-size: 18px;
+}
+
+.container{
+    height: 700px;
+    display: block;
+}
+
+.row{
+    position: relative;
+    top: 150px;
+}
