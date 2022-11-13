@@ -45,9 +45,7 @@ require('database/connect.php');
     foreach($productList as $product){
         echo '<div class="box">
         <div class="icons">
-            <a href="product_detail.php?id='.$product['id'].'" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
+            <a href="chi-tiet-san-pham'.$product['id'].'.html" class="fas fa-shopping-cart"></a>
         </div>
         <div class="image">
             <img src="uploads/'.$product['thumbnail'].'" alt="">

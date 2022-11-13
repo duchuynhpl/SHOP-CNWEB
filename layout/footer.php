@@ -4,12 +4,11 @@
 
         <div class="box">
             <h3>Liên kết nhanh</h3>
-            <a href="index.html"> <i class="fas fa-arrow-right"></i> trang chủ</a>
-            <a href="shop.html"> <i class="fas fa-arrow-right"></i> mua sắm</a>
-            <a href="about.html"> <i class="fas fa-arrow-right"></i> về chúng tôi</a>
-            <a href="review.html"> <i class="fas fa-arrow-right"></i> đánh giá</a>
-            <a href="blog.html"> <i class="fas fa-arrow-right"></i> blog</a>
-            <a href="contact.html"> <i class="fas fa-arrow-right"></i> liên hệ</a>
+            <a href="index.php"> <i class="fas fa-arrow-right"></i> trang chủ</a>
+            <a href="about.php"> <i class="fas fa-arrow-right"></i> về chúng tôi</a>
+            <a href="review.php"> <i class="fas fa-arrow-right"></i> đánh giá</a>
+            <a href="blog.php"> <i class="fas fa-arrow-right"></i> blog</a>
+            <a href="contact.php"> <i class="fas fa-arrow-right"></i> liên hệ</a>
         </div>
 
         <!--

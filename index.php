@@ -67,7 +67,7 @@ require('database/connect.php');
         $sql = "SELECT * FROM category";
         $categoryList = executeResult($sql);
         foreach($categoryList as $category){
-            echo '<a href="/shop.php?id_category='.$category['id'].'" class="box">
+            echo '<a href="/san-pham'.$category['id'].'.html" class="box">
             <img src="image/'.$category['img'].'" alt="">
             <h3>'.$category['name'].'</h3>
             </a>';

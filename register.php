@@ -15,21 +15,36 @@ if(isset($_POST['submit'])){
   $pass = $_POST['pass'];
   $rwpass = $_POST['rw-pass'];
 
-  if($pass != $rwpass){
-    $error['rw-pass'] = 'Xác nhận mật khẩu không đúng';
-  } else {
-    if(empty($error)){
-    $sql = "INSERT INTO user(hoten,password,email,phone) values ('$name','$pass','$email','$sdt')";
-    $query = mysqli_query($con, $sql);
-        if($query){
-            echo '<script language="javascript">
-                alert("Tạo tài khoản thành công"); 
-                window.location = "/login.php";
-                 </script>';
-        }
-      }
+  if(empty($name)){
+    $error['name'] = "Bạn chưa nhập tên";
+  }
+  if(empty($sdt)){
+    $error['sdt'] = "Bạn chưa nhập số điện thoại";
+  }
+  if(empty($email)){
+    $error['email'] = "Bạn chưa nhập địa chỉ email";
+  }
+  if(empty($pass)){
+    $error['pass'] = "Bạn chưa nhập mật khẩu";
   }
 
+  if(empty($error)){
+    if($pass != $rwpass){
+      $error['rw-pass'] = 'Xác nhận mật khẩu không đúng';
+    } else {
+      if(empty($error)){
+      $sql = "INSERT INTO user(hoten,password,email,phone) values ('$name','$pass','$email','$sdt')";
+      $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+      $query = mysqli_query($conn, $sql);
+          if($query){
+              echo '<script language="javascript">
+                  alert("Tạo tài khoản thành công"); 
+                  window.location = "/index.php";
+                  </script>';
+          }
+        }
+    }
+  }
 
 }
 
@@ -56,7 +71,7 @@ if(isset($_POST['submit'])){
     <div class="container-login100">
       <div class="wrap-login100">
         <div class="login100-pic js-tilt" data-tilt>
-          <img src="#" alt="ảnh thời trang">
+          <img src="image/blog-12.jpg" alt="ảnh thời trang">
         </div>
         <form class="login100-form" action="" method="POST">
           <span class="login100-form-title">
@@ -64,6 +79,7 @@ if(isset($_POST['submit'])){
           </span>
           <div class="wrap-input100">
             <input class="input100" type="text" name="name" placeholder="Tên">
+            <span style="color: red;"> <?php echo (isset($error['name']))?$error['name']:''  ?></span>
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa-solid fa-user" aria-hidden="true"></i>
@@ -71,6 +87,7 @@ if(isset($_POST['submit'])){
           </div>
           <div class="wrap-input100">
             <input class="input100" type="number" name="sdt" placeholder="Số điện thoại">
+            <span style="color: red;"> <?php echo (isset($error['sdt']))?$error['sdt']:''  ?></span>
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa-solid fa-phone" aria-hidden="true"></i>
@@ -78,6 +95,7 @@ if(isset($_POST['submit'])){
           </div>
           <div class="wrap-input100">
             <input class="input100" type="email" name="email" placeholder="địa chỉ email">
+            <span style="color: red;"> <?php echo (isset($error['email']))?$error['email']:''  ?></span>
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -85,6 +103,7 @@ if(isset($_POST['submit'])){
           </div>
           <div class="wrap-input100">
             <input class="input100" type="password" name="pass" placeholder="Mật khẩu">
+            <span style="color: red;"> <?php echo (isset($error['pass']))?$error['pass']:''  ?></span>
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-lock" aria-hidden="true"></i>
@@ -92,7 +111,7 @@ if(isset($_POST['submit'])){
           </div>
           <div class="wrap-input100">
             <input class="input100" type="password" name="rw-pass" placeholder="Xác nhận mật khẩu">
-            <span> <?php echo (isset($error['rw-pass']))?$error['rw-pass']:''  ?></span>
+            <span style="color: red;"> <?php echo (isset($error['rw-pass']))?$error['rw-pass']:''  ?></span>
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa-solid fa-circle-check" aria-hidden="true"></i>

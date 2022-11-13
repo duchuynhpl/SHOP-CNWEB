@@ -23,7 +23,7 @@ require('database/connect.php');
     <title>Trang chủ</title>
 
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
@@ -35,7 +35,7 @@ require('database/connect.php');
 
 <header class="header">
 
-    <a href="index.php" class="logo"> <i class="fas fa-shopping-basket"></i> MENSTYLE </a>
+    <a href="index.php" class="logo"> <i class="fa-solid fa-shirt"></i> MENSTYLE </a>
 
     <nav class="navbar">
         <a href="index.php">Trang chủ</a>
@@ -46,7 +46,7 @@ require('database/connect.php');
                 $sql = "SELECT * FROM category";
                 $categoryList = executeResult($sql);
                 foreach($categoryList as $category){
-                    echo '<a class="dropdown-item" href="/shop.php?id_category='.$category['id'].'">'.$category['name'].'</a>
+                    echo '<a class="dropdown-item" href="/san-pham'.$category['id'].'.html">'.$category['name'].'</a>
                     <div class="dropdown-divider"></div>';
                 }?>
             </div>
@@ -59,51 +59,11 @@ require('database/connect.php');
 
     <div class="icons">
         <div id="menu-btn" class="fas fa-bars"></div>
-        <div id="cart-btn" class="fas fa-shopping-cart"></div>
+        <a href="/shopping_cart.php"><div id="cart-btn" class="fas fa-shopping-cart"></div></a>
         <div id="login-btn" class="fas fa-user"></div>
     </div>
 
 
-    <!-- shoping cart is here -->
-    <div class="shopping-cart">
-        <div class="box">
-              <!-- <i class="fas fa-times"></i> -->      
-            <img src="image/quan_dai_thu_mo_vit_perry.jpg" alt="">
-            <div class="content">
-                <h3>quần dài thú mỏ vịt</h3>
-                <span class="quantity">1</span>
-                <span class="multiply">x</span>
-                <span class="price">100.000đ</span>
-            </div>
-            <i class="fas fa-times"></i>
-        </div>
-        <div class="box">
-            <!-- <i class="fas fa-times"></i> -->
-            <img src="image/ao_thun_tron.jpg" alt="">
-            <div class="content">
-                <h3>áo thun vải trơn</h3>
-                <span class="quantity">2</span>
-                <span class="multiply">x</span>
-                <span class="price">59.000đ</span>
-            </div>
-            <i class="fas fa-times"></i>
-        </div>
-        <div class="box">
-            <!-- <i class="fas fa-times"></i> -->
-            <img src="image/lot_khe_nam.jpg" alt="">
-            <div class="content">
-                <h3>quần lọt khe</h3>
-                <span class="quantity">10</span>
-                <span class="multiply">x</span>
-                <span class="price">30.000đ</span>
-            </div>
-            <i class="fas fa-times"></i>
-        </div>
-        <h3 class="total"> tổng : <span>518.000đ</span> </h3>
-        <a href="#" class="btn">thanh toán</a>
-    </div>
-
-<!-- Login form is here -->
 <?php 
     if(isset($_POST['submit'])){
         if(empty($_POST['email']) or empty($_POST['password'])){
@@ -145,7 +105,7 @@ require('database/connect.php');
         </div>
         <input name="submit" type="submit" value="đăng nhập" class="btn">
         <p>quên mật khẩu? <a href="#">bấm vào đây</a></p>
-        <p>chưa có tài khoản? <a href="#">tạo tài khoản</a></p>
+        <p>chưa có tài khoản? <a href="register.php">tạo tài khoản</a></p>
     </form>';
     } else {
         echo'
@@ -157,7 +117,7 @@ require('database/connect.php');
         }
         echo'
         <p><a href="#">Đổi mật khẩu</p><a></h4>
-        <p><a href="#">Lịch sử mua hàng</p><a></h4> <br>
+        <p><a href="history.php">Lịch sử mua hàng</p><a></h4> <br>
         <span><a href="logout.php">Thoát</a></span>
     </form> ';
     }

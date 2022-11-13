@@ -115,7 +115,7 @@ require('database/connect.php');
 
               $insertString = "";
               foreach($orderProducts  as $key => $product){
-                $insertString .= "(NULL, '$orderID', '1', '".$product['id']."', '".$_POST['quanlity'][$product['id']]."', '".$product['price']."', '$status')";
+                $insertString .= "(NULL, '$orderID', '".$_SESSION['users']['id']."', '".$product['id']."', '".$_POST['quanlity'][$product['id']]."', '".$product['price']."', '$status')";
                 if($key != count($orderProducts)-1){
                   $insertString .= ",";
                 }
@@ -123,6 +123,7 @@ require('database/connect.php');
               $sql ="INSERT INTO `order_details` (`id`, `order_id`, `id_user`, `product_id`, `num`, `price`, `status`) VALUES ".$insertString."";
               $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
               $inserOrder = mysqli_query($conn, $sql);
+              unset($_SESSION['cart']);
           }
 
         }

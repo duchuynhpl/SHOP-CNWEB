@@ -1,0 +1,8 @@
+RewriteEngine On
+
+Options All -Indexes
+
+RewriteRule "trang-chu.html" "index.php"
+
+RewriteRule "^san-pham([0-9]+).html$" "shop.php?id_category=$1"
+RewriteRule "^chi-tiet-san-pham([0-9]+).html$" "product_detail.php?id=$1"
